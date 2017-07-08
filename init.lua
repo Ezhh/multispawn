@@ -8,6 +8,7 @@ minetest.register_privilege("spawn4", {description = "Fourth spawn.", give_to_si
 
 -- function to select and move player to correct spawn
 local function respawn(name)
+	local spawnpos
 	-- check minetest.conf file for correct coordinates depending on privs	
 	if minetest.check_player_privs(name, {spawn4=true}) then
 		spawnpos = minetest.setting_get_pos("spawn_coordinate_4")
@@ -22,13 +23,13 @@ local function respawn(name)
 	-- return if no valid spawn position...
 	if not spawnpos then
 		minetest.chat_send_player(name, "No spawn point set...")
-		return false
+	else
+		-- if spawn position found, teleport player
+		local player = minetest.get_player_by_name(name)
+		player:setpos(spawnpos)
+		minetest.chat_send_player(name, "Teleported to Current Spawn!")
 	end
 
-	-- if spawn position found, teleport player
-	local player = minetest.get_player_by_name(name)
-	player:setpos(spawnpos)
-	minetest.chat_send_player(name, "Teleported to Current Spawn!")
 	return true
 end
 
