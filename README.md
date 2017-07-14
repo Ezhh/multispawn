@@ -6,8 +6,6 @@ Extremely basic mod by Shara RedCat for multiple spawn points. Written for Billr
 Note: This is mostly intended as a working concept. 
 Better implementation can be done later if needed.
 
-Other note: This mod not yet tested.
-
 
 How to Use 
 -----------
