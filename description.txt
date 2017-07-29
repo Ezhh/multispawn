@@ -1,0 +1,1 @@
+Allows multiple spawn points to be set depending on player privs.
